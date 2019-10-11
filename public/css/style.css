@@ -1,0 +1,41 @@
+.application--wrap {
+    min-height: 0vh !important;
+    background: #000 !important;
+}
+
+body, html {
+    overflow-x: visible !important;
+}
+.block2-labelfeatured::before {
+    background-color: #2d57a7;
+    content: 'featured';
+}
+.block2-labelfeatured::before {
+    z-index: 100;
+    font-family: Montserrat-Regular;
+    font-size: 12px;
+    color: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 62px;
+    height: 24px;
+    border-radius: 11px;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+.v-toolbar__content, .v-toolbar__extension {
+    margin-bottom: 80px;
+}
+.container.grid-list-md .layout .flex {
+    height: 380px !important;
+}
+.theme--light.v-data-iterator .v-data-iterator__actions {
+    /* margin-top: -100px; */
+}
