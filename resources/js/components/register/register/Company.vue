@@ -7,11 +7,11 @@
                     <v-container grid-list-xl fluid>
                         <v-layout wrap>
                             <v-flex xs12 sm6>
-                                <v-text-field v-model="account.company_name" color="blue darken-2" label="Legal Name / Company Name" required></v-text-field>
+                                <v-text-field v-model="account.company_name" color="blue darken-2" label="Legal Name / Company Name*" required></v-text-field>
                                 <small class="has-text-danger" v-if="errors.company_name">{{ errors.company_name[0] }}</small>
                             </v-flex>
                             <v-flex xs12 sm6>
-                                <v-text-field v-model="account.company_address" color="blue darken-2" label="Company Address" required></v-text-field>
+                                <v-text-field v-model="account.company_address" color="blue darken-2" label="Company Address*" required></v-text-field>
                                 <small class="has-text-danger" v-if="errors.company_address">{{ errors.company_address[0] }}</small>
                             </v-flex>
                             <v-flex xs12 sm6>
@@ -19,11 +19,11 @@
                                 <small class="has-text-danger" v-if="errors.address_2">{{ errors.address_2[0] }}</small>
                             </v-flex>
                             <v-flex xs12 sm6>
-                                <v-text-field v-model="account.company_phone" color="blue darken-2" label="Telephone Number" required></v-text-field>
+                                <v-text-field v-model="account.company_phone" color="blue darken-2" label="Telephone Number*" required></v-text-field>
                                 <small class="has-text-danger" v-if="errors.company_phone">{{ errors.company_phone[0] }}</small>
                             </v-flex>
                             <v-flex xs12 sm6>
-                                <v-text-field v-model="account.company_email" color="blue darken-2" label="Company Email" required></v-text-field>
+                                <v-text-field v-model="account.company_email" color="blue darken-2" label="Company Email*" required></v-text-field>
                                 <small class="has-text-danger" v-if="errors.company_email">{{ errors.company_email[0] }}</small>
                             </v-flex>
                             <v-flex xs12 sm6>
@@ -31,7 +31,7 @@
                                 <small class="has-text-danger" v-if="errors.company_website">{{ errors.company_website[0] }}</small>
                             </v-flex>
                             <v-flex xs12 sm6>
-                                <v-text-field v-model="account.postal_code" color="blue darken-2" label="Company postal_code" required></v-text-field>
+                                <v-text-field v-model="account.postal_code" color="blue darken-2" label="Company postal code" required></v-text-field>
                                 <small class="has-text-danger" v-if="errors.postal_code">{{ errors.postal_code[0] }}</small>
                             </v-flex>
                             <v-flex xs12 sm6>

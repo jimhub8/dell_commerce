@@ -82,7 +82,7 @@ export default {
             //   eventBus.$emit("CompanyEvent");
         },
         goToStep3() {
-            if (this.account.company_name == '', this.account.company_email == '', this.account.company_phone == '', this.account.company_address == '', this.account.company_businessno == '') {
+            if (this.account.company_name == '', this.account.company_email == '', this.account.company_phone == '', this.account.company_address == '') {
                 eventBus.$emit('errorEvent', 'Please confirm if all fields  with * are filled')
                 return
             }
