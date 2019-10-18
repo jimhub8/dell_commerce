@@ -19,8 +19,8 @@
                     <v-flex sm4 offset-sm1>
                         {{ productD.name }}
                         <v-divider></v-divider>
-                        {{ productD.description }} <br>
-
+                        <div v-html="productD.description"></div>
+                        <br>
                         <label for="">Price: <span class="badge pull-right">{{ productD.price }}</span></label><br>
                         <label for="">Quantity: <span class="badge pull-right">{{ productD.quantity }}</span></label>
                         <div v-if="productD.attributes.length > 0">
@@ -142,6 +142,7 @@ export default {
 label {
     padding: 10px 0px !important;
 }
+
 .el-select {
     border: 1px solid #f0f0f0 !important;
     border-radius: 6px !important;

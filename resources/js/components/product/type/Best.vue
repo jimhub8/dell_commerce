@@ -1,6 +1,6 @@
 <template>
 <v-container fluid grid-list-md>
-    <v-data-iterator :items="bestSell" :rows-per-page-items="rowsPerPageItems" :pagination.sync="pagination" content-tag="v-layout" row wrap>
+    <v-data-iterator :items="product.data" :rows-per-page-items="rowsPerPageItems" :pagination.sync="pagination" content-tag="v-layout" row wrap>
         <v-toolbar slot="header" class="mb-2" color="white darken-5" dark flat>
             <v-toolbar-title style="color: #000; margin: auto;">Best Sell</v-toolbar-title>
             <hr>
@@ -20,7 +20,6 @@
                                     </v-layout>
                                 </v-container> -->
                             </v-img>
-
 
                             <!-- <div class="after">This is some content</div> -->
                             <div class="caption after text-center  trans-0-4" :class="{'selected': isSelected(props.item.id)}">
@@ -200,5 +199,14 @@ export default {
 
 /* .theme--light.v-pagination .v-pagination__item {
     display: none !important;
+} */
+
+/* .v-btn--active, .v-btn:focus, .v-btn:hover {
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    max-width: 320px !important;
+    overflow: hidden !important;
+    display: block !important;
+    -webkit-line-clamp: 6 !important;
 } */
 </style>

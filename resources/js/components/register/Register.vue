@@ -61,6 +61,7 @@ export default {
                 account_name: '',
                 mpesa_name: '',
                 mpesa_phone: '',
+                account: 'bank'
             },
             e6: 1,
             errors: {},

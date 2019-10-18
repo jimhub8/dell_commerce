@@ -37,10 +37,7 @@
                     Price: {{ products.price }}
                 </span>
                 <p>Available: {{ products.quantity }}</p>
-
-                <p class="s-text8 p-t-10">
-                    {{ products.description }}
-                </p>
+                <div v-html="products.description"></div>
 
                 <!--  -->
                 <div class="p-t-33 p-b-60">

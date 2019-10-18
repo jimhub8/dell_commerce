@@ -223,42 +223,34 @@ class SafmpesaController extends Controller
 
 
         $url = 'https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate';
-        $shortcode = '743418';
+        $shortcode = '720514';
         $token = $this->token();
-        $transaction = new \Safaricom\Mpesa\Mpesa();
+        // $transaction = new \Safaricom\Mpesa\Mpesa();
 
         // Test
         // $shortcode = '602996';
         $MSISDN = '254708374149';
         $amount = '10';
 
-        $b2bTransaction = $transaction->c2b($shortcode, 'CustomerPayBillOnline', $amount, $MSISDN, 'account');
+        // $b2bTransaction = $transaction->c2b($shortcode, 'CustomerPayBillOnline', $amount, $MSISDN, 'account');
 
         // Log::useDailyFiles(storage_path() . '/logs/saf_logs.log');
         // $trans_ = new \Safaricom\Mpesa\TransactionCallbacks();
         // $trans_->processC2BRequestValidation();
-        return $b2bTransaction;
-        /*$data = array(
-            "ShortCode" => $shortcode,
-            "CommandID" => "CustomerPayBillOnline",
-            "Amount" => "1",
-            "Msisdn" => "254708374149",
-            "BillRefNumber" => "account"
-        );
-        $url = 'https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate';
+        // return $b2bTransaction;
+
+
 
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json', 'Authorization:Bearer ' . $token)); //setting custom header
-
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json','Authorization:Bearer '.$token));
 
         $curl_post_data = array(
-            //Fill in the request parameters with valid values
-            "ShortCode" => $shortcode,
-            "CommandID" => "CustomerPayBillOnline",
-            "Amount" => "1",
-            "Msisdn" => "254708374149",
-            "BillRefNumber" => "account"
+            'ShortCode' => $shortcode,
+            'CommandID' => 'CustomerBuyGoodsOnline',
+            'Amount' => 1000,
+            'Msisdn' => $MSISDN,
+            // 'BillRefNumber' => $BillRefNumber
         );
 
         $data_string = json_encode($curl_post_data);
@@ -266,10 +258,10 @@ class SafmpesaController extends Controller
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
-
+        curl_setopt($curl, CURLOPT_HEADER, false);
         $curl_response = curl_exec($curl);
-        dd($curl_response);
-*/
+        return $curl_response;
+
         // echo $curl_response['ConversationID'];
     }
 

@@ -5,37 +5,42 @@
             <v-layout wrap>
                 <v-form ref="form" @submit.prevent="submit">
                     <v-container grid-list-xl fluid>
+                        <v-radio-group v-model="account.payment_details" :mandatory="false">
+                            <v-radio label="Bank" value="bank"></v-radio>
+                            <v-radio label="M-pesa" value="m_pesa"></v-radio>
+                        </v-radio-group>
                         <v-layout wrap>
-                            <v-flex xs12 sm6>
+                            <v-flex xs12 sm6 v-if="account.payment_details == 'm_pesa'">
                                 <v-text-field v-model="account.mpesa_name" color="blue darken-2" label="MPESA Registered Name" required></v-text-field>
                                 <small class="has-text-danger" v-if="errors.mpesa_name">{{ errors.mpesa_name[0] }}</small>
                             </v-flex>
-                            <v-flex xs12 sm6>
+                            <v-flex xs12 sm6 v-if="account.payment_details == 'm_pesa'">
                                 <v-text-field v-model="account.mpesa_phone" color="blue darken-2" label="Mpesa Phone Number" required></v-text-field>
                                 <small class="has-text-danger" v-if="errors.mpesa_phone">{{ errors.mpesa_phone[0] }}</small>
                             </v-flex>
-                            <v-flex xs12 sm6>
-                                <v-text-field v-model="account.account_name" color="blue darken-2" label="Account Name" required></v-text-field>
-                                <small class="has-text-danger" v-if="errors.account_name">{{ errors.account_name[0] }}</small>
-                            </v-flex>
-                            <v-flex xs12 sm6>
-                                <v-text-field v-model="account.account_no" color="blue darken-2" label="Account No." required></v-text-field>
-                                <small class="has-text-danger" v-if="errors.account_no">{{ errors.account_no[0] }}</small>
-                            </v-flex>
-                            <v-flex xs12 sm6>
+                            <v-flex xs12 sm6 v-if="account.payment_details == 'bank'">
                                 <v-text-field v-model="account.bank" color="blue darken-2" label="Bank" required></v-text-field>
                                 <small class="has-text-danger" v-if="errors.bank">{{ errors.bank[0] }}</small>
                             </v-flex>
-                            <v-flex xs12 sm6>
+                            <v-flex xs12 sm6 v-if="account.payment_details == 'bank'">
                                 <v-text-field v-model="account.bank_code" color="blue darken-2" label="Bank Code" required></v-text-field>
                                 <small class="has-text-danger" v-if="errors.bank_code">{{ errors.bank_code[0] }}</small>
                             </v-flex>
-                            <v-flex xs12 sm6>
+                            <v-flex xs12 sm6 v-if="account.payment_details == 'bank'">
                                 <v-text-field v-model="account.branch" color="blue darken-2" label="Branch" required></v-text-field>
                                 <small class="has-text-danger" v-if="errors.branch">{{ errors.branch[0] }}</small>
                             </v-flex>
-                        </v-layout>
 
+
+                            <v-flex xs12 sm6  v-if="account.payment_details == 'bank' || account.payment_details == 'm_pesa'">
+                                <v-text-field v-model="account.account_name" color="blue darken-2" label="Account Name" required></v-text-field>
+                                <small class="has-text-danger" v-if="errors.account_name">{{ errors.account_name[0] }}</small>
+                            </v-flex>
+                            <v-flex xs12 sm6  v-if="account.payment_details == 'bank' || account.payment_details == 'm_pesa'">
+                                <v-text-field v-model="account.account_no" color="blue darken-2" label="Account No." required></v-text-field>
+                                <small class="has-text-danger" v-if="errors.account_no">{{ errors.account_no[0] }}</small>
+                            </v-flex>
+                        </v-layout>
                     </v-container>
                 </v-form>
             </v-layout>

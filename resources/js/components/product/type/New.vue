@@ -112,9 +112,9 @@ export default {
         }
     },
     mounted() {
-        axios.get("/newProduct").then(response => {
-            this.newProduct = response.data;
-        });
+        // axios.get("/newProduct").then(response => {
+        //     // this.newProduct = response.data;
+        // });
     }
 };
 </script>

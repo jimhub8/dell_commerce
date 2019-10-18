@@ -1,6 +1,6 @@
 <template>
 <v-container fluid grid-list-md>
-    <v-data-iterator :items="featured" :rows-per-page-items="rowsPerPageItems" :pagination.sync="pagination" content-tag="v-layout" row wrap>
+    <v-data-iterator :items="product.data" :rows-per-page-items="rowsPerPageItems" :pagination.sync="pagination" content-tag="v-layout" row wrap>
         <v-toolbar slot="header" class="mb-2" color="white darken-5" dark flat>
             <v-toolbar-title style="color: #000; margin: auto;">Featured</v-toolbar-title>
         </v-toolbar>
