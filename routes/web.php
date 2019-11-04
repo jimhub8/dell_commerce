@@ -42,8 +42,8 @@ Route::post('couponApply', 'CouponController@couponApply')->name('couponApply');
 
 Route::get('couponSes', 'CartController@couponSes')->name('couponSes');
 
-Route::get('/', 'Client\HomeController@index')->name('client.dashboard');
-// Route::get('/', 'Client\HomeController@ecommerce')->name('ecommerce');
+// Route::get('/', 'Client\HomeController@index')->name('client.dashboard');
+Route::get('/', 'HomeController@ecommerce')->name('ecommerce');
 Route::resource('products', 'ProductController1');
 Route::resource('wish', 'WishController');
 Route::resource('subcategories', 'SupCategoryController');

@@ -12,7 +12,7 @@
 </transition>
 
 @endguest  --}}
-@if(Auth::guard('client')->check())
+@if(Auth::check())
 <my-nav :user="{{ json_encode($auth_user) }}"></my-nav>
 <transition name="fade">
     <router-view :user="{{ json_encode($auth_user) }}"></router-view>

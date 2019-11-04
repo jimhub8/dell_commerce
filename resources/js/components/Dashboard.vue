@@ -369,10 +369,10 @@ export default {
         //     })
 
     },
-    
+
     beforeRouteEnter(to, from, next) {
         next(vm => {
-            if (vm.user.can['view dashboard']) { 
+            if (vm.user.can['view dashboard']) {
                 next();
             } else {
                 next('/unauthorized');

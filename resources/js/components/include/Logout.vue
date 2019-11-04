@@ -11,16 +11,16 @@
             <v-list>
                 <v-list-tile avatar>
                     <v-list-tile-avatar>
-                        <!-- <avatar :username="user.name" style="font-size: 40px;margin: auto;padding: 50px;"></avatar> -->
-                        <!-- <avatar :username="user.name" style="font-size: 20px;margin: auto;padding: 0px;"></avatar> -->
-                        <img @error="onImageLoadFailure($event)" :src="user.profile" :alt="user.name">
+                        <avatar :fullname="user.name" style="font-size: 20px;margin: auto;padding: 0px;"></avatar>
+                        <!-- <img @error="time_out($event)" :src="user.profile"> -->
+                        <!-- <img :src="user.profile" alt="" @error="time_out($event)" v-show="image_exists"> -->
                     </v-list-tile-avatar>
 
-                        <v-list-tile-content>
-                            <v-list-tile-title>{{ user.name }}</v-list-tile-title>
-                        </v-list-tile-content>
+                    <v-list-tile-content>
+                        <v-list-tile-title>{{ user.name }}</v-list-tile-title>
+                    </v-list-tile-content>
 
-                        <!-- <v-list-tile-action v-if="notifications.length > 0">
+                    <!-- <v-list-tile-action v-if="notifications.length > 0">
                         <v-tooltip bottom>
                             <v-btn slot="activator" :class="fav ? 'red--text' : ''" icon @click="read()">
                                 <v-icon>check_circle</v-icon>
@@ -78,10 +78,17 @@
 
 <script>
 // import Avatar from 'vue-avatar'
+import Avatar from 'vue-avatar-component'
+
 export default {
     props: ['user'],
-    computed: {
-        // Avatar
+    data() {
+        return {
+            image_exists: true
+        }
+    },
+    components: {
+        Avatar
     },
     data() {
         return {
@@ -93,6 +100,12 @@ export default {
         }
     },
     methods: {
+        time_out(event) {
+            this.image_exists = false
+            // this.timer = setTimeout(() => {
+            //     this.onImageLoadFailure(event)
+            // }, 3000);
+        },
         onImageLoadFailure(event) {
             event.target.src = '/storage/profile/image.png'
         }
