@@ -9,6 +9,7 @@ use App\models\AutoGenerate;
 use App\models\Product;
 use App\models\Product_warehouse;
 use App\models\Saleorder;
+use App\User;
 use Spatie\Permission\Models\Permission;
 
 class ClientController extends Controller
@@ -68,15 +69,15 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         // return $request->all();
-        $client = Client::find($id);
+        $client = User::find($id);
         $client->address = $request->address;
-        $client->address_2 = $request->address_2;
+        // $client->address_2 = $request->address_2;
         $client->city = $request->city;
         $client->email = $request->email;
         $client->name = $request->name;
         $client->phone = $request->phone;
         // $client->salutat = $request->salutat;
-        $client->work_phone = $request->work_phone;
+        // $client->work_phone = $request->work_phone;
         $client->save();
         return $client;
     }

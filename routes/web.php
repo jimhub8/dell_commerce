@@ -115,18 +115,19 @@ Route::get('subcategory/{id}', 'SupCategoryController@subcategory')->name('subca
 
 Route::get('show_product/{id}', 'ProductController@show_product')->name('show_product');
 
-Route::group(['middleware' => ['client.auth:client']], function () {
+// Route::group(['middleware' => ['client.auth:client']], function () {
+// });
+
+// Auth::routes();
+// Route::group(['middleware' => ['verified']], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::post('createpayment', 'PaymentController@create')->name('create');
     Route::get('execute-payment', 'PaymentController@execute')->name('execute');
     Route::post('cash_delivery', 'PaymentController@cash_delivery')->name('cash_delivery');
     // Route::get('sales', 'PaymentController@sales')->name('sales');
     Route::get('/clientOrders', 'SaleController@clientOrders')->name('clientOrders');
     Route::resource('clients', 'ClientController');
-});
 
-// Auth::routes();
-// Route::group(['middleware' => ['verified']], function () {
-Route::group(['middleware' => ['auth']], function () {
     Route::get('/paypal', function () {
         return view('paypal.createPay');
     });

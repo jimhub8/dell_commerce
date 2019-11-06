@@ -119,7 +119,7 @@ class CartControllercopy extends Controller
 
     public function cartAdd(Request $request, $id)
     {
-        return $request->all();
+        // return $request->all();
         // $request->session()->flush('cart');
 
         $product = Product::setEagerLoads([])->find($id);

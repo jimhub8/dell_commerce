@@ -68,6 +68,7 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['guard_name' => 'web', 'name' => 'view returns']);
         Permission::create(['guard_name' => 'web', 'name' => 'view settings']);
         Permission::create(['guard_name' => 'web', 'name' => 'view reports']);
+        Permission::create(['guard_name' => 'web', 'name' => 'download invoice']);
 
 
         Permission::create(['guard_name' => 'web', 'name' => 'filter product by client']);
@@ -81,7 +82,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $role = Role::create(['guard_name' => 'web', 'name' => 'Admin']);
         $role->givePermissionTo('view users');
 
-        $role = Role::create(['guard_name' => 'client', 'name' => 'Client']);
+        // $role = Role::create(['guard_name' => 'client', 'name' => 'Client']);
         $role->givePermissionTo('view orders');
 
     }

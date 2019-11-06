@@ -116,7 +116,7 @@ class SaleController extends Controller
     }
     public function clientOrders()
     {
-        $sales = Sale::where('user_id', Auth::guard('client')->id())->paginate(500);
+        $sales = Sale::where('user_id', Auth::id())->paginate(500);
         $sales->transform(function($sale) {
             $created_at = Carbon::parse($sale->created_at);
             $sale->order_date = $created_at->format('D d M Y');

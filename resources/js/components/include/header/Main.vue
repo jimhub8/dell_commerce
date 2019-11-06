@@ -14,7 +14,7 @@
 
             <!-- Logo2 -->
             <router-link to="/" class="logo2">
-                <img src="/storage/logo/delmat1.jpg" alt="Delmat" style="height: 50px !important;">
+                <img src="/storage/logo/logo.png" alt="Delmat" style="height: 50px !important;">
                 </router-link>
 
                 <div class="topbar-child2">

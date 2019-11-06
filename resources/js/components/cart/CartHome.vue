@@ -42,7 +42,7 @@
                                         <i class="fa fa-minus"></i>
                                     </v-btn>
                                     <p style="text-align: center; margin: auto;">{{ cart.qty }}</p>
-                                    <v-btn icon small @click="addToCart(cart.name.id)">
+                                    <v-btn icon small @click="addToCart(cart.name.id)"> 
                                         <v-icon>add</v-icon>
                                     </v-btn>
                                 </div>

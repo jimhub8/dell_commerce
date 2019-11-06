@@ -3,10 +3,10 @@
     <div class="wrap_header_mobile">
         <!-- Logo moblie -->
         <a href="index.html" class="logo-mobile">
-            <img src="/storage/logo/delmat1.jpg" alt="Delmat" style="max-width: 100px;">
+            <img src="/storage/logo/logo.png" alt="Delmat" style="max-width: 100px;">
         </a>
 
-        <!-- Button show menu -->
+        <!-- Button show menu --> 
         <div class="btn-show-menu">
             <!-- Header Icon mobile -->
             <div class="header-icons-mobile">

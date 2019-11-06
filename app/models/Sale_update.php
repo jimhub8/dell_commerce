@@ -11,14 +11,14 @@ class Sale_update extends Model
     public function sold($status, $order_id)
     {
 
-        $user = Auth::guard('client')->user();
+        $user = Auth::user();
         $cart = $this->getCart();
         foreach ($cart as $product) {
             $product_ = Product::find($product->id);
             // dd($product_->company_id);
             $sales = new Sale();
             $sales->product_id = $product->id;
-            $sales->user_id = Auth::guard('client')->id();
+            $sales->user_id = Auth::id();
             $sales->order_id = $order_id;
             $sales->company_id = $product_->company_id;
             $sales->list_price = $product->list_price;

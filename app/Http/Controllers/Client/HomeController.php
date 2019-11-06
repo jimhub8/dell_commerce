@@ -28,8 +28,8 @@ class HomeController extends Controller
      */
     public function index() {
         // return view('client.home');
-        if (Auth::guard('client')->check()) {
-            $user = Auth::guard('client')->user();
+        if (Auth::check()) {
+            $user = Auth::user();
             $permissions = [];
             foreach (Permission::all() as $permission) {
                 if ($user->can($permission->name)) {
@@ -40,7 +40,7 @@ class HomeController extends Controller
             }
 
             $auth_user = array_prepend($user->toArray(), $permissions, 'can');
-            $user = Auth::guard('client')->user();
+            $user = Auth::user();
             // dd($user);
             return view('welcome', compact('auth_user'));
         } else {
