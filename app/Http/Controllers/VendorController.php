@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\VendorMail;
+use App\Mail\WelcomeEmail;
 
 class VendorController extends Controller
 {
@@ -52,7 +53,7 @@ class VendorController extends Controller
         $password_hash = Hash::make($password);
         $user->password = $password_hash;
         $user->assignRole('Store Admin');
-        Mail::send(new VendorMail($user, $password));
+        Mail::send(new WelcomeEmail($user, $password));
         // $user->notify(new SignupActivate($user, $password));
         $user->save();
 
