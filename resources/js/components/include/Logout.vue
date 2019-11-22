@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </a> -->
-                <router-link to="/myOrders" class="v-list__tile v-list__tile--link">My orders</router-link>
+                <router-link to="/account" class="v-list__tile v-list__tile--link">My account</router-link>
             </v-list>
 
             <v-divider></v-divider>

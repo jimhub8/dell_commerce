@@ -51,6 +51,7 @@ Route::resource('reviews', 'ReviewController');
 Route::resource('attributes', 'AttributeController');
 Route::resource('product_attribute', 'ProductAttributeController');
 Route::resource('attribute_value', 'AttributeValueController');
+Route::resource('address', 'AddressController');
 
 Route::get('/ecommerce', 'HomeController@ecommerce')->name('ecommerce')->middleware('verified');
 Route::get('/getReviews/{id}', 'ReviewController@getReviews')->name('getReviews');

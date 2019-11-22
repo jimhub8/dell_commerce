@@ -8,7 +8,7 @@
 
             <div>
                 <p class="s-text7 w-size27">
-                    Our phone number: <b>+254792877803</b>
+                    Our phone number: <b><a href="tel:+254792877803">+254792877803</a></b>
                 </p>
                 Social media
                 <hr>
@@ -37,34 +37,34 @@
 
             <ul>
                 <li class="p-b-9">
-                    <a href="#" class="s-text7">
+                    <router-link class="s-text7" to="help_center">
                         How to shop on Dellmat
-                    </a>
+                    </router-link>
                 </li>
                 <li class="p-b-9">
-                    <a href="#" class="s-text7">
+                    <router-link class="s-text7" to="help_center">
                         Track order
-                    </a>
+                    </router-link>
                 </li>
                 <li class="p-b-9">
-                    <a href="#" class="s-text7">
+                    <router-link class="s-text7" to="help_center">
                         Shipping and delivery
-                    </a>
+                    </router-link>
                 </li>
                 <li class="p-b-9">
-                    <a href="#" class="s-text7">
+                    <router-link class="s-text7" to="help_center">
                         Privacy policy
-                    </a>
+                    </router-link>
                 </li>
                 <li class="p-b-9">
-                    <a href="#" class="s-text7">
+                    <router-link class="s-text7" to="help_center">
                         Return policy
-                    </a>
+                    </router-link>
                 </li>
                 <li class="p-b-9">
-                    <a href="#" class="s-text7">
+                    <router-link class="s-text7" to="help_center">
                         FAQ's
-                    </a>
+                    </router-link>
                 </li>
             </ul>
         </div>
@@ -76,18 +76,17 @@
 
             <ul>
                 <li class="p-b-9">
-                    <a href="#" class="s-text7">
+                    <a class="s-text7" href="/vendors">
                         Become a seller
                     </a>
                 </li>
                 <li class="p-b-9">
-                    <a href="#" class="s-text7">
+                    <a class="s-text7" href="/register">
                         Become a buyer
                     </a>
                 </li>
             </ul>
         </div>
-
         <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
             <h4 class="s-text12 p-b-30">
                 Best ratings
@@ -95,11 +94,11 @@
 
             <ul>
                 <li class="p-b-9" v-for="rating in ratings" :key="rating.id">
-                    <a href="#" class="s-text7">
+                    <router-link class="s-text7" to="help_center">
                         {{ rating.product_name }}
-                        <span>
-                            <v-rating color="orange" readonly small v-model="rating.rating"></v-rating>
-                        </span>
+                    </router-link>
+                    <v-rating color="orange" readonly small v-model="rating.rating"></v-rating>
+                    </span>
                     </a>
                 </li>
 

@@ -6,14 +6,22 @@
             <img src="/storage/logo/logo.png" alt="Delmat" style="max-width: 100px;">
         </a>
 
-        <!-- Button show menu --> 
+        <!-- Button show menu -->
         <div class="btn-show-menu">
             <!-- Header Icon mobile -->
             <div class="header-icons-mobile">
                 <!-- <a href="/login" class="header-wrapicon1 dis-block" v-if="user">
               <img src="/storage/icons/icon-header-01.png" class="header-icon1" alt="ICON">
             </a> -->
-                <a href="/login" class="v-btn v-btn--flat theme--light primary--text" style="text-decoration: none;">Become a seller</a>
+                <v-tooltip bottom id="mobile">
+                    <a href="/vendor">
+                        <v-btn slot="activator" icon class="mx-0">
+                            <v-icon small color="indigo darken-2">login</v-icon>
+                        </v-btn>
+                    </a>
+                    <span>Become a seller</span>  
+                </v-tooltip>
+                <!-- <a href="/vendor" class="v-btn v-btn--flat theme--light primary--text" style="text-decoration: none;">Become a seller</a> -->
                 <Logout :user="user" v-if="user"></Logout>
 
                 <a href="/login" class="v-btn v-btn--flat theme--light primary--text" style="text-decoration: none;" v-else>Login</a>

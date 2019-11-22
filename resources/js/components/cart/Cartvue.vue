@@ -26,13 +26,13 @@
           >View Cart</router-link>
           <!-- <a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4"></a> -->
         </div>
-        <form action="/createpayment" method="post">
+        <!-- <form action="/createpayment" method="post">
           <input type="hidden" name="_token" :value="csrf">
           <button
             class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4"
             type="submit" style="width: 125px;"
           >Check Out</button>
-        </form>
+        </form> -->
       </div>
     </div>
   </div>

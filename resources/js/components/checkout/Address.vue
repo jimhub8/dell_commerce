@@ -10,19 +10,19 @@
                 <v-text-field v-model="user.email" color="blue darken-2" label="Email" required></v-text-field>
             </v-flex>
             <v-flex xs12 sm6>
-                <v-text-field v-model="user.address" color="blue darken-2" label="Address" required></v-text-field>
+                <v-text-field v-model="user.address.address" color="blue darken-2" label="Address" required></v-text-field>
             </v-flex>
             <v-flex xs12 sm6>
-                <v-text-field v-model="user.city" color="blue darken-2" label="City" required></v-text-field>
+                <v-text-field v-model="user.address.city" color="blue darken-2" label="City" required></v-text-field>
             </v-flex>
             <v-flex xs12 sm6>
-                <v-text-field v-model="user.country" color="blue darken-2" label="Country" required></v-text-field>
+                <v-text-field v-model="user.address.country" color="blue darken-2" label="Country" required></v-text-field>
             </v-flex>
             <v-flex xs12 sm6>
-                <v-text-field v-model="user.phone" color="blue darken-2" label="Phone" required></v-text-field>
+                <v-text-field v-model="user.address.phone" color="blue darken-2" label="Phone" required></v-text-field>
             </v-flex>
             <v-flex xs12 sm6>
-                <v-text-field v-model="user.phone" color="blue darken-2" label="Zip/Postcode" required></v-text-field>
+                <v-text-field v-model="user.address.postal_code" color="blue darken-2" label="Zip/Postcode" required></v-text-field>
             </v-flex>
         </v-layout>
 

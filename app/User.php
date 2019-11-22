@@ -15,7 +15,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use SoftDeletes;
     use HasRoles, HasApiTokens;
-
+    public $with = ['address'];
     /**
      * The attributes that are mass assignable.
      *
@@ -38,6 +38,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function orders()
     {
         return $this->hasMany('App\Order', 'buyer_id');
+    }
+
+    public function address()
+    {
+        return $this->hasOne('App\models\Address', 'user_id');
     }
 
     /**

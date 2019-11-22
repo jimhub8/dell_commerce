@@ -248,7 +248,13 @@
                     <!-- <a href="/login" class="header-wrapicon1 dis-block" v-if="user">
               <img src="/storage/icons/icon-header-01.png" class="header-icon1" alt="ICON">
             </a> -->
-                    <a href="/vendors" class="v-btn v-btn--flat theme--light primary--text" style="text-decoration: none;">Become a seller</a>
+                    <a href="/vendors" class="flat theme--light primary--text" style="text-decoration: none; font-size: 10px">Become a seller</a>
+                     <!-- <v-tooltip bottom id="mobile">
+                        <v-btn slot="activator" icon class="mx-0">
+                            <v-icon small color="blue darken-2">visibility</v-icon>
+                        </v-btn>
+                    <span>Become a seller</span>
+                </v-tooltip> -->
                     <Logout :user="user" v-if="user"></Logout>
 
                     <a href="/login" class="v-btn v-btn--flat theme--light primary--text" style="text-decoration: none;" v-else>Login</a>

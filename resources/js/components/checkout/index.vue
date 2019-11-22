@@ -61,7 +61,7 @@ export default {
                 return
             }
             this.e6 = 2
-            axios.patch(`/clients/${this.user.id}`, this.account).
+            axios.patch(`/address/${this.user.id}`, this.account).
             then((response) => {})
                 .catch((error) => {
                     if (error.response.status === 500) {

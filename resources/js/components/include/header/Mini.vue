@@ -27,7 +27,7 @@
                     <!-- <a href="/login" class="header-wrapicon1 dis-block" v-if="user">
             <img src="/storage/icons/icon-header-01.png" class="header-icon1" alt="ICON">
           </a> -->
-                    <a href="/login" class="v-btn v-btn--flat theme--light primary--text" style="text-decoration: none;" >Become a seller</a>
+                    <!-- <a href="/login" class="v-btn v-btn--flat theme--light primary--text" style="text-decoration: none;" >Become a seller</a> -->
                     <Logout :user="user" v-if="user"></Logout>
 
                     <v-btn href="/login" class="v-btn v-btn--flat theme--light primary--text" style="text-decoration: none;" v-else>Login</v-btn>

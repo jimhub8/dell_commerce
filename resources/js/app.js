@@ -15,6 +15,7 @@ import VueScrollTo from 'vue-scrollto'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 // import '@fortawesome/fontawesome-free/css/all.css' // Ensure you are using css-loader
 import 'vuetify/dist/vuetify.min.css'
+import * as VueGoogleMaps from 'vue2-google-maps'
 
 // import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
@@ -35,6 +36,13 @@ import StoreData from './store/store'
 
 // Vue.use(VueLazyload)
 // Vue.use(VueCarousel);
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: 'AIzaSyBNzKeF6ZwxlAOUCyeH8UxvvYRHP_w_Guk',
+        libraries: ['geometry', 'places'],
+        // libraries: 'places',
+    },
+})
 Vue.use(Vuetify)
 Vue.use(VueRouter)
 Vue.use(VueScrollTo, {
@@ -86,10 +94,14 @@ import SearchP from './components/Shop/Search';
 import myThanks from './components/Shop/Thankyou';
 // import myunauth from './components/Unauthorized.vue';
 
+import myFaq from './components/content/faq';
+// import myPrivacy from './components/content/privacy';
+
 // Clients
-import myClientOrders from './components/clients/Orders';
 import myCheckout from './components/checkout'
-import myAccount from './components/client/Client';
+// import myAccount from './components/client/Client';
+
+import myAccount from './components/account';
 
 const routes = [
     // { path: '/example', component: exampleComponent },
@@ -107,11 +119,17 @@ const routes = [
     { path: '/search/:search', component: SearchP, name: 'search' },
     { path: '/thankyou', component: myThanks, name: 'thankyou' },
     // { path: '/unauthorized', component: myunauth },
-    { path: '/profile', component: myAccount },
+    { path: '/account', component: myAccount },
     { path: '/checkout', component: myCheckout, name: 'checkout' },
 
+    // { path: '/privacy', component: myPrivacy },
+    { path: '/help_center', component: myFaq },
+
+
     // Clients
-    { path: '/myOrders', component: myClientOrders },
+    // { path: '/myOrders', component: myClientOrders },
+
+
 
 ]
 const router = new VueRouter({
@@ -123,8 +141,8 @@ const app = new Vue({
     store,
     router,
     components: {
-        myNavmenu, myRegister, myFooter, myHome, productDetail, myShop, myCartHome, myFilter, mywishList, CategoryFilter, SearchP, myThanks, myAccount, myNav
+        myNavmenu, myRegister, myFooter, myHome, productDetail, myShop, myCartHome, myFilter, mywishList, CategoryFilter, SearchP, myThanks, myAccount, myNav, myFaq,
 
-        // , myunauth
+        // , myunauth, myPrivacy
     },
 });
