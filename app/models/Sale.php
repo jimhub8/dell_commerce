@@ -11,4 +11,8 @@ class Sale extends Model
     {
         return $this->belongsTo('App\models\Product', 'product_id');
     }
+    public function order()
+    {
+        return $this->belongsTo('App\Order', 'order_id');
+    }
 }

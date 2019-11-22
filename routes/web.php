@@ -128,6 +128,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::get('sales', 'PaymentController@sales')->name('sales');
     Route::get('/clientOrders', 'SaleController@clientOrders')->name('clientOrders');
     Route::resource('clients', 'ClientController');
+    Route::any('invoice/{id}', 'InvoiceController@invoice')->name('invoice');
 
     Route::get('/paypal', function () {
         return view('paypal.createPay');
