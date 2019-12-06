@@ -34,7 +34,7 @@
 
 <script>
 import myAddress from './content/Address'
-import myOrders from '../clients/Orders'
+import myOrders from '../orders/Orders'
 export default {
     props: ['user'],
     components: {

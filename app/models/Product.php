@@ -4,9 +4,13 @@ namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Laravel\Scout\Searchable;
 
-class Product extends Model
+class Product extends Model implements HasMedia
 {
+    use HasMediaTrait, Searchable;
     public $with = ['images', 'reviews', 'attributes'];
     // public function brand()
     // {

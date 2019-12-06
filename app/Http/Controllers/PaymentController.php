@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ThankYou;
 use Illuminate\Http\Request;
 use PayPal\Api\Payment;
 use PayPal\Api\Amount;
@@ -24,6 +25,7 @@ use App\models\Sale;
 use App\models\AutoGenerate;
 use App\models\Currency;
 use App\models\Sale_update;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
@@ -202,6 +204,9 @@ class PaymentController extends Controller
     {
         // return $request->all();
         // dd($this->getCart());
+
+        $user = Auth::user();
+        $cart = $this->getCart();
         $order = new Order;
         $order->buyer_id = Auth::id();
         // $order->buyer_id = Auth::id();
@@ -210,7 +215,6 @@ class PaymentController extends Controller
         // foreach ($cart as $product) {
         //     $order->company_id = $product['item']['company_id'];
         // }
-        $user = Auth::user();
         $order->address = $user->address;
         $order->status = 'Unconfirmed';
         $order->amount = $this->cart_total();;
@@ -234,12 +238,20 @@ class PaymentController extends Controller
         // $order->paypal = serialize($payment);
         // $orderSave = $user->orders()->save();
         $order->save();
-        $cart = $this->getCart();
+
         $this->getCartProduct();
         $sale_update = new Sale_update();
         $sale_update->sold('Unconfirmed', $order->id);
+        $mail_order = Order::select('address', 'amount', 'buyer_id', 'created_at', 'deleted_at', 'delivered', 'id', 'name', 'payment_id', 'paypal', 'status',)->with('sales')->find($order->id);
+        // $mail_order->transform(function($cart) {
+        //     $cart->cart = '';
+        // });
+        // return ($mail_order);
+        // Mail::queue(new ClientWelcome($user));
+        Mail::send(new ThankYou($user, $mail_order, $this->cart_total()));
+        return;
         // $this->sales('Unconfirmed', $request->all());
-        Notification::send($user, new OrderNotification($order, $cart));
+        // Notification::send($user, new OrderNotification($order, $cart));
         if ($order->save()) {
             // $request->session()->forget('cart');
             // Cart::destroy();

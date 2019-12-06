@@ -103,6 +103,9 @@ import myCheckout from './components/checkout'
 
 import myAccount from './components/account';
 
+import InstantSearch from 'vue-instantsearch';
+
+Vue.use(InstantSearch); 
 const routes = [
     // { path: '/example', component: exampleComponent },
 

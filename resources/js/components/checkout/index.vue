@@ -90,9 +90,9 @@ export default {
             this.loading = true
             axios.post('/vendor_user', this.$data.account).
             then((response) => {
-                    this.loading = false
+                    this.loading = false 
                     this.$emit('alertRequest', 'Account Created');
-                    eventBus.$emit("userResponse");
+                    // eventBus.$emit("userResponse");
                 })
                 .catch((error) => {
                     this.loading = false

@@ -39,7 +39,19 @@
                 <v-layout wrap>
                     <v-flex sm5 class="form-group" style="margin-top: 10px">
                         <!-- <v-text-field v-model="form.search" color="blue darken-2" label="Menu Name" required></v-text-field> -->
-                        <input type="text" class="form-control" placeholder="Search..." v-model="search" @keyup.enter="productSearch">
+                        <!-- <input type="text" class="form-control" placeholder="Search..." v-model="search" @keyup.enter="productSearch"> -->
+
+                        <ais-index app-id="latency" api-key="3d9875e51fbd20c7754e65422f7ce5e1" index-name="bestbuy">
+                            <ais-search-box></ais-search-box>
+                            <ais-results>
+                                <template slot-scope="{ result }">
+                                    <h2>
+                                        <ais-highlight :result="result" attribute-name="name"></ais-highlight>
+                                    </h2>
+                                </template>
+                            </ais-results>
+                        </ais-index>
+
                     </v-flex>
                     <v-flex sm2 style="margin-top: 5px">
                         <v-tooltip bottom>
@@ -190,7 +202,17 @@
                 <v-layout wrap>
                     <v-flex sm5 class="form-group" style="margin-top: 10px">
                         <!-- <v-text-field v-model="form.search" color="blue darken-2" label="Menu Name" required></v-text-field> -->
-                        <input type="text" class="form-control" placeholder="Search..." v-model="search" @keyup.enter="productSearch">
+                        <!-- <input type="text" class="form-control" placeholder="Search..." v-model="search" @keyup.enter="productSearch"> -->
+                        <ais-index app-id="latency" api-key="3d9875e51fbd20c7754e65422f7ce5e1" index-name="bestbuy">
+                            <ais-search-box></ais-search-box>
+                            <ais-results>
+                                <template slot-scope="{ result }">
+                                    <h2>
+                                        <ais-highlight :result="result" attribute-name="name"></ais-highlight>
+                                    </h2>
+                                </template>
+                            </ais-results>
+                        </ais-index>
                     </v-flex>
                     <v-flex sm2 style="margin-top: 5px">
                         <v-tooltip bottom>
@@ -249,7 +271,7 @@
               <img src="/storage/icons/icon-header-01.png" class="header-icon1" alt="ICON">
             </a> -->
                     <a href="/vendors" class="flat theme--light primary--text" style="text-decoration: none; font-size: 10px">Become a seller</a>
-                     <!-- <v-tooltip bottom id="mobile">
+                    <!-- <v-tooltip bottom id="mobile">
                         <v-btn slot="activator" icon class="mx-0">
                             <v-icon small color="blue darken-2">visibility</v-icon>
                         </v-btn>
@@ -308,7 +330,7 @@
 
                     <li class="item-topbar-mobile p-l-10">
                         <div class="topbar-social-mobile">
-                    <a href="https://www.facebook.com/DellmatGroup" target="_blank" class="topbar-social-item fa fa-facebook"></a>
+                            <a href="https://www.facebook.com/DellmatGroup" target="_blank" class="topbar-social-item fa fa-facebook"></a>
                             <!-- <a href="#" class="topbar-social-item fa fa-facebook"></a>
                             <a href="#" class="topbar-social-item fa fa-instagram"></a>
                             <a href="#" class="topbar-social-item fa fa-pinterest-p"></a>

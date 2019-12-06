@@ -27,6 +27,9 @@ Route::get('vendors', function () {
 Route::get('thankyou', function () {
     return view('include.thankyou');
 });
+Route::get('/testmail', 'MailController@testmail')->name('testmail');
+
+
 Route::post('/vendor_user', 'VendorController@vendor_user')->name('vendor_user');
 Route::post('/vendor_company', 'VendorController@vendor_company')->name('vendor_company');
 Route::post('vendor_logo/{id}', 'VendorController@vendor_logo')->name('vendor_logo');

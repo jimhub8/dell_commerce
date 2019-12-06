@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Mail\ClientWelcome;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -63,11 +65,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        Mail::send(new ClientWelcome($user));
+        return $user;
+        // $user->noty(new ClientWelcome($user));
     }
 
     /**
@@ -84,6 +89,6 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
         $user->assignRole('Store Admin');
-        
+
     }
 }
