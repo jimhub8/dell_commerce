@@ -83,160 +83,162 @@
 <script>
 import headerP from "../include/Headerpartial";
 export default {
-  components: {
-    headerP
-  },
-  data() {
-    return {
-      products: [],
-      menus: [],
-      search: this.$route.params.search,
-      loader: false,
-      wish: [],
-      cat_id: null
-    };
-  },
-  methods: {
-    searchItems() {
-      eventBus.$emit("progressEvent");
-      axios
-        .post("/search", this.form)
-        .then(response => {
-          eventBus.$emit("StoprogEvent");
-          this.products = response.data;
-        })
-        .catch(error => {
-          eventBus.$emit("StoprogEvent");
-          this.errors = error.response.data.errors;
-        });
+    components: {
+        headerP
     },
-    catId(item) {
-      this.cat_id = item;
-      this.FilterShop();
+    data() {
+        return {
+            products: [],
+            menus: [],
+            search: this.$route.params.search,
+            loader: false,
+            wish: [],
+            cat_id: null
+        };
     },
-    catAll() {
-      this.cat_id = null;
-      this.FilterShop();
-    },
+    methods: {
+        searchItems() {
+            eventBus.$emit("progressEvent");
+            axios
+                .post("/search", this.form)
+                .then(response => {
+                    eventBus.$emit("StoprogEvent");
+                    this.products = response.data;
+                })
+                .catch(error => {
+                    eventBus.$emit("StoprogEvent");
+                    this.errors = error.response.data.errors;
+                });
+        },
+        catId(item) {
+            this.cat_id = item;
+            this.FilterShop();
+        },
+        catAll() {
+            this.cat_id = null;
+            this.FilterShop();
+        },
 
-    detail(Pid) {
-      this.$router.push({
-        name: "details",
-        params: {
-          id: Pid
+        detail(Pid) {
+            this.$router.push({
+                name: "details",
+                params: {
+                    id: Pid
+                }
+            });
+        },
+
+        redirect(search) {
+            this.$router.push({
+                name: "search",
+                params: {
+                    search: search
+                }
+            });
+            this.getProduct(search);
+        },
+        getProduct(search) {
+            // console.log(search);
+
+            this.loader = true;
+            eventBus.$emit("progressEvent");
+            axios
+                .post(`/searchItems/${search}`)
+                .then(response => {
+                    //   eventBus.$emit("ScollEvent");
+                    eventBus.$emit("StoprogEvent");
+                    this.loader = false;
+                    this.products = response.data;
+                    this.search = search;
+                })
+                .catch(error => {
+                    this.loader = false;
+                    eventBus.$emit("StoprogEvent");
+                    this.errors = error.response.data.errors;
+                });
+        },
+
+        addToCart(cart) {
+            eventBus.$emit("addCartEvent", cart);
+        },
+
+        next(page) {
+            eventBus.$emit("progressEvent");
+            axios
+                .post(this.products.path + `?page=` + this.products.current_page, {
+                    item: this.cat_id,
+                    price: this.priceSelect,
+                    itemSelect: this.itemSelect
+                })
+                .then(response => {
+                    eventBus.$emit("StoprogEvent");
+                    this.products = response.data;
+                })
+                .catch(error => {
+                    eventBus.$emit("StoprogEvent");
+                    this.errors = error.response.data.errors;
+                });
+        },
+        getMenus() {
+            axios
+                .get("/menus")
+                .then(response => {
+                    this.menus = response.data;
+                })
+                .catch(error => {
+                    this.errors = error.response.data.errors;
+                });
+        },
+        FilterShop(item) {
+            eventBus.$emit("progressEvent");
+            axios
+                .post("/FilterShop", {
+                    item: this.cat_id,
+                    price: this.priceSelect,
+                    itemSelect: this.itemSelect
+                })
+                .then(response => {
+                    eventBus.$emit("StoprogEvent");
+                    this.loader = false;
+                    this.products = response.data;
+                })
+                .catch(error => {
+                    eventBus.$emit("StoprogEvent");
+                    this.loader = false;
+                    this.errors = error.response.data.errors;
+                });
+        },
+        getWish() {
+            eventBus.$emit("progressEvent");
+            axios
+                .get("/wish")
+                .then(response => {
+                    eventBus.$emit("StoprogEvent");
+                    this.wish = response.data;
+                })
+                .catch(error => {
+                    eventBus.$emit("StoprogEvent");
+                    this.errors = error.response.data.errors;
+                });
+        },
+        addToWish(item) {
+            eventBus.$emit("WishListEvent", item);
         }
-      });
     },
-
-    redirect(search) {
-      this.$router.push({
-        name: "search",
-        params: {
-          search: this.search
-        }
-      });
-      this.getProduct(search);
+    mounted() {
+        this.loader = true;
+        this.getProduct(this.$route.params.search);
     },
-    getProduct(search) {
-          this.loader = true;
-      eventBus.$emit("progressEvent");
-      axios
-        .post(`/searchItems/${search}`)
-        .then(response => {
-        //   eventBus.$emit("ScollEvent");
-          eventBus.$emit("StoprogEvent");
-          this.loader = false;
-          this.products = response.data;
-          this.search = search;
-        })
-        .catch(error => {
-          this.loader = false;
-          eventBus.$emit("StoprogEvent");
-          this.errors = error.response.data.errors;
+    created() {
+        eventBus.$on("searchEvent", data => {
+            this.redirect(data);
         });
-    },
-
-    addToCart(cart) {
-      eventBus.$emit("addCartEvent", cart);
-    },
-
-    next(page) {
-      eventBus.$emit("progressEvent");
-      axios
-        .post(this.products.path + `?page=` + this.products.current_page, {
-          item: this.cat_id,
-          price: this.priceSelect,
-          itemSelect: this.itemSelect
-        })
-        .then(response => {
-          eventBus.$emit("StoprogEvent");
-          this.products = response.data;
-        })
-        .catch(error => {
-          eventBus.$emit("StoprogEvent");
-          this.errors = error.response.data.errors;
-        });
-    },
-    getMenus() {
-      axios
-        .get("/menus")
-        .then(response => {
-          this.menus = response.data;
-        })
-        .catch(error => {
-          this.errors = error.response.data.errors;
-        });
-    },
-    FilterShop(item) {
-      eventBus.$emit("progressEvent");
-      axios
-        .post("/FilterShop", {
-          item: this.cat_id,
-          price: this.priceSelect,
-          itemSelect: this.itemSelect
-        })
-        .then(response => {
-          eventBus.$emit("StoprogEvent");
-          this.loader = false;
-          this.products = response.data;
-        })
-        .catch(error => {
-          eventBus.$emit("StoprogEvent");
-          this.loader = false;
-          this.errors = error.response.data.errors;
-        });
-    },
-    getWish() {
-      eventBus.$emit("progressEvent");
-      axios
-        .get("/wish")
-        .then(response => {
-          eventBus.$emit("StoprogEvent");
-          this.wish = response.data;
-        })
-        .catch(error => {
-          eventBus.$emit("StoprogEvent");
-          this.errors = error.response.data.errors;
-        });
-    },
-    addToWish(item) {
-      eventBus.$emit("WishListEvent", item);
     }
-  },
-  mounted() {
-    this.loader = true;
-    this.getProduct(this.$route.params.search);
-  },
-  created() {
-    eventBus.$on("searchEvent", data => {
-      this.redirect(data);
-    });
-  }
 };
 </script>
 
 <style scoped>
 .wrap-pic-w img {
-  height: 300px;
+    height: 300px;
 }
 </style>

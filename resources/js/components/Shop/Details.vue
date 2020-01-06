@@ -115,15 +115,12 @@
                         Related Products
                     </h3>
                 </div> -->
-
             <v-data-iterator :items="relatedProducts" :rows-per-page-items="rowsPerPageItems" :pagination.sync="pagination" content-tag="v-layout" row wrap>
                 <v-toolbar slot="header" class="mb-2" color="white darken-5" dark flat>
                     <v-toolbar-title style="color: #000; margin: auto;">Related Products</v-toolbar-title>
                 </v-toolbar>
                 <v-flex slot="item" slot-scope="props" xs12 sm6 md4 lg3>
-
                     <v-card>
-
                         <!-- <v-divider></v-divider> -->
                         <v-card-text>
                             <v-content>
@@ -172,11 +169,9 @@
                             <div class="row">
                                 <div class="col-6">
                                     <small class="text-danger">List price: <s>{{ props.item.list_price }}</s></small>
-
                                 </div>
                                 <div class="col-6">
                                     <p class="price">Our price: {{ props.item.price }}</p>
-
                                 </div>
                             </div>
                             <!-- <v-divider></v-divider> -->
@@ -184,7 +179,6 @@
                     </v-card>
                 </v-flex>
             </v-data-iterator>
-
             <!-- Slide2 -->
         </div>
     </section>
@@ -398,6 +392,7 @@ export default {
     mounted() {
         this.loader = true;
         this.getProduct();
+        eventBus.$emit("ScollEvent");
         // this.getRelated();
         // this.getReviews();
         // this.getAvgReviews();
@@ -407,7 +402,12 @@ export default {
             this.getReviews();
             this.getAvgReviews();
         });
-    }
+    },
+    // beforeRouteEnter(to, from, next) {
+    //     next(vm => {
+    //         eventBus.$emit('ScollTopEvent')
+    //     })
+    // }
 };
 </script>
 

@@ -18,9 +18,9 @@
                 </router-link>
 
                 <div class="topbar-child2">
-                    <span class="topbar-email">info@dellmat.com</span>
+                    <span class="topbar-email"><a href="mailto:info@dellmat.com" target="_blank">info@dellmat.com</a></span>
 
-                    <div class="topbar-language rs1-select2">
+                    <div class="topbar-language rs1-select2" style="margin-left: 10px !important">
                         <select class="selection-1" name="time">
                             <option>KSH</option>
                         </select>

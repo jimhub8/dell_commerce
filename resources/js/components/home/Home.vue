@@ -199,6 +199,7 @@ export default {
         }
     },
     mounted() {
+        eventBus.$emit("ScollTopEvent");
         // eventBus.$emit('StoprogEvent');
         // alert('enter')
         (this.loader = true),

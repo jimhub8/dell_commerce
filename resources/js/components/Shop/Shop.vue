@@ -405,6 +405,7 @@ export default {
         this.loader = true;
         this.FilterShop();
         this.getMenus();
+        eventBus.$emit("ScollTopEvent");
     },
     updated() {},
     beforeRouteLeave(to, from, next) {

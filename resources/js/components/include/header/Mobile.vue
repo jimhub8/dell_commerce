@@ -19,7 +19,7 @@
                             <v-icon small color="indigo darken-2">login</v-icon>
                         </v-btn>
                     </a>
-                    <span>Become a seller</span>  
+                    <span>Become a seller</span>
                 </v-tooltip>
                 <!-- <a href="/vendor" class="v-btn v-btn--flat theme--light primary--text" style="text-decoration: none;">Become a seller</a> -->
                 <Logout :user="user" v-if="user"></Logout>
@@ -57,15 +57,15 @@
     <div class="wrap-side-menu">
         <nav class="side-menu">
             <ul class="main-menu">
-                <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+                <!-- <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
                     <span class="topbar-child1">Free shipping for standard order over Ksh1000</span>
-                </li>
+                </li> -->
 
                 <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
                     <div class="topbar-child2-mobile">
-                        <span class="topbar-email">info@dellmat.com</span>
+                        <span class="topbar-email"><a href="mailto:info@dellmat.com" target="_blank">info@dellmat.com</a></span>
 
-                        <div class="topbar-language rs1-select2">
+                        <div class="topbar-language rs1-select2" style="margin-left: 10px !important">
                             <select class="selection-1" name="time">
                                 <option>KSH</option>
                             </select>

@@ -26,6 +26,7 @@
                     <input type="text" class="form-control" v-model="form.email" placeholder="Your email">
                     <br>
                     <textarea v-model="form.message" cols="10" rows="5" class="form-control" placeholder="message"></textarea>
+                    <VBtn color="primary">Submit</VBtn>
                 </div>
             </div>
         </div>
@@ -37,32 +38,32 @@
 
             <ul>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="help_center">
+                    <router-link class="s-text7" to="/help_center">
                         How to shop on Dellmat
                     </router-link>
                 </li>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="help_center">
+                    <router-link class="s-text7" to="/help_center">
                         Track order
                     </router-link>
                 </li>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="help_center">
+                    <router-link class="s-text7" to="/help_center">
                         Shipping and delivery
                     </router-link>
                 </li>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="help_center">
+                    <router-link class="s-text7" to="/help_center">
                         Privacy policy
                     </router-link>
                 </li>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="help_center">
+                    <router-link class="s-text7" to="/help_center">
                         Return policy
                     </router-link>
                 </li>
                 <li class="p-b-9">
-                    <router-link class="s-text7" to="help_center">
+                    <router-link class="s-text7" to="/help_center">
                         FAQ's
                     </router-link>
                 </li>
@@ -91,15 +92,14 @@
             <h4 class="s-text12 p-b-30">
                 Best ratings
             </h4>
-
             <ul>
                 <li class="p-b-9" v-for="rating in ratings" :key="rating.id">
-                    <router-link class="s-text7" to="help_center">
+                    <router-link class="s-text7" to="/help_center">
                         {{ rating.product_name }}
                     </router-link>
                     <v-rating color="orange" readonly small v-model="rating.rating"></v-rating>
-                    </span>
-                    </a>
+                    <!-- </span>
+                    </a> -->
                 </li>
 
             </ul>

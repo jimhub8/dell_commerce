@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\File;
 //     return view('welcome');
 // });
 
+// Socialite
+Route::get('login/{service}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{service}/callback', 'Auth\LoginController@handleProviderCallback');
+
 Route::get('vendors', function () {
     return view('auth.vendor');
 });
@@ -28,6 +32,8 @@ Route::get('thankyou', function () {
     return view('include.thankyou');
 });
 Route::get('/testmail', 'MailController@testmail')->name('testmail');
+
+Route::get('/algolia_search/{search}', 'ProductController@algolia_search')->name('algolia_search');
 
 
 Route::post('/vendor_user', 'VendorController@vendor_user')->name('vendor_user');

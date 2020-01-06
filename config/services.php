@@ -44,4 +44,15 @@ return [
         'ID' => env('PAYPAL_ID'),
         'secret' => env('PAYPAL_SECRET'),
     ],
+
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID'),         // Your Facebook Client ID
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'), // Your Facebook Client Secret
+        'redirect' => 'http://127.0.0.1:8000/facebook/callback',
+    ],
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),         // Your Facebook Client ID
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'), // Your Facebook Client Secret
+        'redirect' => 'http://127.0.0.1:8000/google/callback',
+    ],
 ];

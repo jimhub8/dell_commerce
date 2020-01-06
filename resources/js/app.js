@@ -15,12 +15,12 @@ import VueScrollTo from 'vue-scrollto'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 // import '@fortawesome/fontawesome-free/css/all.css' // Ensure you are using css-loader
 import 'vuetify/dist/vuetify.min.css'
-import * as VueGoogleMaps from 'vue2-google-maps'
+// import * as VueGoogleMaps from 'vue2-google-maps'
 
-// import ElementUI from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css';
-// import lang from 'element-ui/lib/locale/lang/en'
-// import locale from 'element-ui/lib/locale'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import lang from 'element-ui/lib/locale/lang/en'
+import locale from 'element-ui/lib/locale'
 // import VueCarousel from 'vue-carousel';
 // import VueLazyload from 'vue-lazyload'
 // import JsonExcel from 'vue-json-excel'
@@ -32,17 +32,17 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 import StoreData from './store/store'
 
 // Vue.use(VueGoodTablePlugin);
-// Vue.use(ElementUI, { locale });
+Vue.use(ElementUI, { locale });
 
 // Vue.use(VueLazyload)
 // Vue.use(VueCarousel);
-Vue.use(VueGoogleMaps, {
-    load: {
-        key: 'AIzaSyBNzKeF6ZwxlAOUCyeH8UxvvYRHP_w_Guk',
-        libraries: ['geometry', 'places'],
-        // libraries: 'places',
-    },
-})
+// Vue.use(VueGoogleMaps, {
+//     load: {
+//         key: 'AIzaSyBNzKeF6ZwxlAOUCyeH8UxvvYRHP_w_Guk',
+//         libraries: ['geometry', 'places'],
+//         // libraries: 'places',
+//     },
+// })
 Vue.use(Vuetify)
 Vue.use(VueRouter)
 Vue.use(VueScrollTo, {
@@ -105,7 +105,8 @@ import myAccount from './components/account';
 
 import InstantSearch from 'vue-instantsearch';
 
-Vue.use(InstantSearch); 
+
+Vue.use(InstantSearch);
 const routes = [
     // { path: '/example', component: exampleComponent },
 

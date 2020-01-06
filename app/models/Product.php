@@ -86,4 +86,16 @@ class Product extends Model implements HasMedia
         'new_product' => 'boolean',
         'best_sell' => 'boolean',
     ];
+
+
+
+    /**
+     * Get the index name for the model.
+     *
+     * @return string
+     */
+    public function searchableAs()
+    {
+        return 'productname';
+    }
 }

@@ -39,14 +39,20 @@ class FilterController extends Controller
     public function FilterShop(Request $request)
     {
         // return $request->all();
+        // return $request->price['state'];
         $products = new Product;
         if ($request->itemSelect['state'] != 'All') {
             $item = $request->itemSelect['state'];
-            $products = Product::where($item, 1);
+            // $products = Product::where($item, 1);
         }
-        if (!empty($request->price)) {
-            $products = $products->whereBetween('price', $request->price);
+        // return $products->paginate(12);
+        if (array_key_exists('state', $request->price)) {
+            if ($request->price['state'] != 'All') {
+                // $products = $products->whereBetween('price', $request->price['state']);
+                $products = $products->whereBetween('price', $request->price['state']);
+            }
         }
+        // return $products->paginate(12);
         if ($request->item) {
             $products = $products->where('category_id', $request->item);
         }

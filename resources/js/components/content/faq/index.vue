@@ -46,7 +46,7 @@ export default {
                 },
                 {
                     title: 'Returns',
-                    value: `Being a customer, you are entitled a 7 days free return after product receipt. After this period the product is guaranteed to be in good condition and this return will not be accepted.
+                    value: `Being a customer, you are entitled a 48 hours free return after product receipt. After this period the product is guaranteed to be in good condition and this return will not be accepted.
                     To be eligible for a return, product has to be unused and in the same condition that you received it.
                     Return is allowed only for defective and wrong items.
                     Requirements for a valid return
@@ -168,7 +168,7 @@ export default {
                 // policy
                 {
                     title: '1. Privacy Policy',
-                    value: 'Dellmat, is committed to making your search for the perfect mattress and a great night sleep as simple and comfortable as possible. Respecting your privacy is an extension of this service and this policy outlines the types and use of information that you have shared with us as part of using our online services.' + '<br />' + 'In continuing to use this website, you agree to the collection, use and selective disclosure of your personally identifiable information as described below. If you do not agree to the terms of this Privacy Policy, please do not continue to use this website.',
+                    value: 'Dellmat, is committed to making your search for the perfect product as simple and comfortable as possible. Respecting your privacy is an extension of this service and this policy outlines the types and use of information that you have shared with us as part of using our online services.' + '<br />' + 'In continuing to use this website, you agree to the collection, use and selective disclosure of your personally identifiable information as described below. If you do not agree to the terms of this Privacy Policy, please do not continue to use this website.',
                     category: 'PRIVACY POLICY'
                 },
                 {
@@ -289,7 +289,10 @@ export default {
                 },
             ]
         }
-    }
+    },
+    mounted() {
+        eventBus.$emit("ScollTopEvent");
+    },
 }
 </script>
 

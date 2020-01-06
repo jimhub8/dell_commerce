@@ -588,6 +588,7 @@ class ProductController extends Controller
 
     public function searchItems($search)
     {
+        // return Product::where($search)->paginate();
         // return $search;
         return Product::where('name', 'LIKE', "%{$search}%")
             ->orWhere('product_name', 'LIKE', "%{$search}%")
@@ -609,5 +610,11 @@ class ProductController extends Controller
         } else {
             return Product::where('company_id', Auth::user()->company_id)->take(500)->latest()->get();
         }
+    }
+
+    public function algolia_search($search)
+    {
+
+        return Product::search($search)->get();
     }
 }

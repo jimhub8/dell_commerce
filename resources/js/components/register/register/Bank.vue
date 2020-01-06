@@ -31,12 +31,11 @@
                                 <small class="has-text-danger" v-if="errors.branch">{{ errors.branch[0] }}</small>
                             </v-flex>
 
-
-                            <v-flex xs12 sm6  v-if="account.payment_details == 'bank' || account.payment_details == 'm_pesa'">
+                            <v-flex xs12 sm6  v-if="account.payment_details == 'bank'">
                                 <v-text-field v-model="account.account_name" color="blue darken-2" label="Account Name" required></v-text-field>
                                 <small class="has-text-danger" v-if="errors.account_name">{{ errors.account_name[0] }}</small>
                             </v-flex>
-                            <v-flex xs12 sm6  v-if="account.payment_details == 'bank' || account.payment_details == 'm_pesa'">
+                            <v-flex xs12 sm6  v-if="account.payment_details == 'bank'">
                                 <v-text-field v-model="account.account_no" color="blue darken-2" label="Account No." required></v-text-field>
                                 <small class="has-text-danger" v-if="errors.account_no">{{ errors.account_no[0] }}</small>
                             </v-flex>

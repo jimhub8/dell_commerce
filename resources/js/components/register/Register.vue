@@ -29,6 +29,7 @@
         {{ message }}
         <v-icon dark right>check_circle</v-icon>
     </v-snackbar>
+    <myTips></myTips>
 </v-stepper>
 </template>
 
@@ -37,12 +38,13 @@ import Register from './register/Register.vue';
 import Company from './register/Company.vue';
 import Bank from './register/Bank';
 import Seller from './register/Seller';
+import myTips from './tips'
 export default {
     components: {
         Register,
         Company,
         Seller,
-        Bank
+        Bank, myTips
     },
     data() {
         return {
@@ -66,6 +68,7 @@ export default {
             e6: 1,
             errors: {},
             message: "Success",
+            loading: false,
             snackbar: false,
             y: "bottom",
             x: "left",

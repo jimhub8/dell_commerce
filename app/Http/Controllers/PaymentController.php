@@ -258,7 +258,7 @@ class PaymentController extends Controller
         }
 
         // return $this->returngetCart();
-        // return redirect('/#/thankyou');
+        return redirect('/#/thankyou');
     }
     public function sales($status, $account)
     {

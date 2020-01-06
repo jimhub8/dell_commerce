@@ -12,11 +12,13 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main1.css') }}">
+    <link href="{{ asset('css/algolia.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 </head>
 
-<body class="animsition">
+{{--  <body class="animsition">  --}}
+    <body>
     <div id="app">
         <main class="py-4">
             @yield('content')

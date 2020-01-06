@@ -39,18 +39,9 @@
                 <v-layout wrap>
                     <v-flex sm5 class="form-group" style="margin-top: 10px">
                         <!-- <v-text-field v-model="form.search" color="blue darken-2" label="Menu Name" required></v-text-field> -->
-                        <!-- <input type="text" class="form-control" placeholder="Search..." v-model="search" @keyup.enter="productSearch"> -->
+                        <input type="text" class="form-control" placeholder="Search..." v-model="search" @keyup.enter="productSearch">
 
-                        <ais-index app-id="latency" api-key="3d9875e51fbd20c7754e65422f7ce5e1" index-name="bestbuy">
-                            <ais-search-box></ais-search-box>
-                            <ais-results>
-                                <template slot-scope="{ result }">
-                                    <h2>
-                                        <ais-highlight :result="result" attribute-name="name"></ais-highlight>
-                                    </h2>
-                                </template>
-                            </ais-results>
-                        </ais-index>
+                        <!-- <mySearch></mySearch> -->
 
                     </v-flex>
                     <v-flex sm2 style="margin-top: 5px">
@@ -137,9 +128,9 @@
                 </router-link>
 
                 <div class="topbar-child2">
-                    <span class="topbar-email">info@dellmat.com</span>
+                    <span class="topbar-email"><a href="mailto:info@dellmat.com" target="_blank">info@dellmat.com</a></span>
 
-                    <div class="topbar-language rs1-select2">
+                    <div class="topbar-language rs1-select2" style="margin-left: 10px !important">
                         <select class="selection-1" name="time">
                             <option>KSH</option>
                         </select>
@@ -202,17 +193,8 @@
                 <v-layout wrap>
                     <v-flex sm5 class="form-group" style="margin-top: 10px">
                         <!-- <v-text-field v-model="form.search" color="blue darken-2" label="Menu Name" required></v-text-field> -->
-                        <!-- <input type="text" class="form-control" placeholder="Search..." v-model="search" @keyup.enter="productSearch"> -->
-                        <ais-index app-id="latency" api-key="3d9875e51fbd20c7754e65422f7ce5e1" index-name="bestbuy">
-                            <ais-search-box></ais-search-box>
-                            <ais-results>
-                                <template slot-scope="{ result }">
-                                    <h2>
-                                        <ais-highlight :result="result" attribute-name="name"></ais-highlight>
-                                    </h2>
-                                </template>
-                            </ais-results>
-                        </ais-index>
+                        <input type="text" class="form-control" placeholder="Search..." v-model="search" @keyup.enter="productSearch">
+                        <!-- <mySearch></mySearch> -->
                     </v-flex>
                     <v-flex sm2 style="margin-top: 5px">
                         <v-tooltip bottom>
@@ -270,13 +252,15 @@
                     <!-- <a href="/login" class="header-wrapicon1 dis-block" v-if="user">
               <img src="/storage/icons/icon-header-01.png" class="header-icon1" alt="ICON">
             </a> -->
-                    <a href="/vendors" class="flat theme--light primary--text" style="text-decoration: none; font-size: 10px">Become a seller</a>
-                    <!-- <v-tooltip bottom id="mobile">
-                        <v-btn slot="activator" icon class="mx-0">
-                            <v-icon small color="blue darken-2">visibility</v-icon>
-                        </v-btn>
-                    <span>Become a seller</span>
-                </v-tooltip> -->
+                    <v-tooltip bottom id="mobile">
+                        <a href="/vendor">
+                            <v-btn slot="activator" icon class="mx-0">
+                                <v-icon small color="indigo darken-2">login</v-icon>
+                            </v-btn>
+                        </a>
+                        <span>Become a seller</span>
+                    </v-tooltip>
+                    <!-- <a href="/vendor" class="v-btn v-btn--flat theme--light primary--text" style="text-decoration: none;">Become a seller</a> -->
                     <Logout :user="user" v-if="user"></Logout>
 
                     <a href="/login" class="v-btn v-btn--flat theme--light primary--text" style="text-decoration: none;" v-else>Login</a>
@@ -285,7 +269,7 @@
 
                     <div class="header-wrapicon2">
                         <img src="/storage/icons/cart.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-                        <span class="header-icons-noti">{{ cartItems }}</span>
+                        <span class="header-icons-noti">{{ cartItems.length }}</span>
 
                         <!-- Header cart noti -->
                         <myCart></myCart>
@@ -312,15 +296,15 @@
         <div class="wrap-side-menu">
             <nav class="side-menu">
                 <ul class="main-menu">
-                    <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
-                        <span class="topbar-child1">Free shipping for standard order over Ksh1000</span>
-                    </li>
+                    <!-- <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+                    <span class="topbar-child1">Free shipping for standard order over Ksh1000</span>
+                </li> -->
 
                     <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
                         <div class="topbar-child2-mobile">
-                            <span class="topbar-email">info@dellmat.com</span>
+                            <span class="topbar-email"><a href="mailto:info@dellmat.com" target="_blank">info@dellmat.com</a></span>
 
-                            <div class="topbar-language rs1-select2">
+                            <div class="topbar-language rs1-select2" style="margin-left: 10px !important">
                                 <select class="selection-1" name="time">
                                     <option>KSH</option>
                                 </select>
@@ -331,8 +315,7 @@
                     <li class="item-topbar-mobile p-l-10">
                         <div class="topbar-social-mobile">
                             <a href="https://www.facebook.com/DellmatGroup" target="_blank" class="topbar-social-item fa fa-facebook"></a>
-                            <!-- <a href="#" class="topbar-social-item fa fa-facebook"></a>
-                            <a href="#" class="topbar-social-item fa fa-instagram"></a>
+                            <!-- <a href="#" class="topbar-social-item fa fa-instagram"></a>
                             <a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
                             <a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
                             <a href="#" class="topbar-social-item fa fa-youtube-play"></a> -->
@@ -341,18 +324,6 @@
 
                     <li>
                         <router-link @click.native="progressBar" to="/" style="color: #333">Home</router-link>
-                        <!-- <a href="index.html">Home</a> -->
-                        <!-- <ul class="sub_menu">
-                <li>
-                  <a href="index.html">Homepage V1</a>
-                </li>
-                <li>
-                  <a href="home-02.html">Homepage V2</a>
-                </li>
-                <li>
-                  <a href="home-03.html">Homepage V3</a>
-                </li>
-              </ul>-->
                     </li>
 
                     <li>
@@ -362,9 +333,9 @@
                     <li>
                         <router-link @click.native="progressBar" to="/cartHome" style="color: #333">Cart</router-link>
                     </li>
-                    <!-- <li>
+                    <li>
                         <router-link @click.native="progressBar" to="/about" style="color: #333">About</router-link>
-                    </li> -->
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -394,11 +365,12 @@ import myWish from "../wish/Wishvue";
 import myShop from "../Shop/Shop";
 import CartHome from "../cart/CartHome";
 import Logout from "./Logout";
+// import mySearch from './Search'
 export default {
     // router,
     props: ["user"],
     components: {
-        // Show,
+        // mySearch,
         vueTopprogress,
         myWish,
         myShop,
@@ -408,6 +380,7 @@ export default {
     },
     data() {
         return {
+            form: {},
             search: "",
             catShow: false,
             menuShow: false,
@@ -562,6 +535,8 @@ export default {
         },
 
         productSearch() {
+            // alert('test')
+            // eventBus.$emit("openSearch");
             eventBus.$emit("searchEvent", this.search);
             this.$router.push({
                 name: "search",
@@ -599,6 +574,10 @@ export default {
         });
         eventBus.$on("ScollEvent", data => {
             window.scrollTo(0, 300);
+            // VueScroll.scrollTo('#headerq', 1000)
+        });
+        eventBus.$on("ScollTopEvent", data => {
+            window.scrollTo(0, 0);
             // VueScroll.scrollTo('#headerq', 1000)
         });
         eventBus.$on("errorEvent", data => {
