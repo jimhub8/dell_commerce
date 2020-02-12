@@ -113,7 +113,6 @@
 <script>
 // import myShop from '../Shop/Shop'
 import myFilter from "../filter/Filter";
-// import Prescription from "./Prescription";
 import myProduct from "../product/Sliders";
 // import myShop from "../Shop/Shop";
 // import CartHome from "../cart/CartHome";
@@ -128,7 +127,6 @@ export default {
         Show,
         myProduct,
         myFilter
-        // Prescription
     },
     data() {
         return {

@@ -9,7 +9,6 @@
                     <v-card>
                         <v-card-title>
                             Order
-                            <v-btn @click="openAdd" flat color="primary">Add Order</v-btn>
 
                             <!-- <v-spacer></v-spacer> -->
                             <v-tooltip bottom>
@@ -34,41 +33,24 @@
                                 <td class="text-xs-right">{{ props.item.quantity }}</td>
                                 <td class="text-xs-right">{{ props.item.status }}</td>
                                 <td class="justify-center layout px-0">
-                                    <v-tooltip bottom v-if="user.can['edit orders']">
-                                        <v-btn slot="activator" icon class="mx-0" @click="editProduct(props.item)">
-                                            <v-icon small color="blue darken-2">edit</v-icon>
-                                        </v-btn>
-                                        <span>Edit</span>
-                                    </v-tooltip>
-                                    <v-tooltip bottom v-if="user.can['edit orders']">
-                                        <v-btn slot="activator" icon class="mx-0" @click="updateStatus(props.item)">
-                                            <v-icon small color="blue darken-2">question_answer</v-icon>
-                                        </v-btn>
-                                        <span>update status</span>
-                                    </v-tooltip>
-                                    <v-tooltip bottom v-if="user.can['view orders']">
+
+                                    <v-tooltip bottom>
                                         <v-btn slot="activator" icon class="mx-0" @click="view(props.item)">
                                             <v-icon small color="indigo darken-2">visibility</v-icon>
                                         </v-btn>
                                         <span>View Order</span>
                                     </v-tooltip>
-                                    <v-tooltip bottom v-if="user.can['delete orders']">
-                                        <v-btn slot="activator" icon class="mx-0" @click="deleteItem(props.item)">
-                                            <v-icon small color="pink darken-2">delete</v-icon>
-                                        </v-btn>
-                                        <span>delete Order</span>
-                                    </v-tooltip>
-                                    <form :action="'/invoice/'+props.item.id" method="get" target="_blank" v-if="user.can['download invoice']">
+                                    <form :action="'/invoice/'+props.item.id" method="get" target="_blank">
                                         <input type="hidden" name="_token" :value="csrf">
                                         <input type="hidden" name="type" value="stream">
                                         <v-tooltip bottom>
                                             <v-btn flat slot="activator" color="info" icon class="mx-0" type="submit">
                                                 <v-icon>book</v-icon>
                                             </v-btn>
-                                            <span>Stream invoice</span>
+                                            <span>View invoice</span>
                                         </v-tooltip>
                                     </form>
-                                    <form :action="'/invoice/'+props.item.id" method="get" v-if="user.can['download invoice']">
+                                    <form :action="'/invoice/'+props.item.id" method="get">
                                         <input type="hidden" name="_token" :value="csrf">
                                         <input type="hidden" name="type" value="download">
                                         <v-tooltip bottom>

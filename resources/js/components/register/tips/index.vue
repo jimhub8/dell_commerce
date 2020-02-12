@@ -14,11 +14,12 @@
             <Tip7 v-if="count == 7"></Tip7>
             <Tip8 v-if="count == 8"></Tip8>
             <Tip9 v-if="count == 9"></Tip9>
+            <myTerms v-if="count == 10"></myTerms>
             <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" flat @click="count += 1" v-if="count < 9">Next</v-btn>
+                <v-btn color="blue darken-1" flat @click="count += 1" v-if="count < 10">Next</v-btn>
                 <v-btn color="blue darken-1" flat @click="dialog = false" v-else>Finish</v-btn>
-                <v-btn color="blue darken-1" flat @click="dialog = false">Skip</v-btn>
+                <v-btn color="blue darken-1" flat @click="skip_data"  v-if="count < 10">Skip</v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>
@@ -35,6 +36,7 @@ import Tip6 from './tip6'
 import Tip7 from './tip7'
 import Tip8 from './tip8'
 import Tip9 from './tip9'
+import myTerms from './terms'
 export default {
     components: {
         Tip1,
@@ -45,12 +47,19 @@ export default {
         Tip6,
         Tip7,
         Tip8,
-        Tip9
+        Tip9,
+        myTerms
     },
     data() {
         return {
             count: 1,
             dialog: true,
+        }
+    },
+    methods: {
+        skip_data() {
+            this.count = 10
+            // this.dialog = false
         }
     },
 }

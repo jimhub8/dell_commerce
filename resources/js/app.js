@@ -82,7 +82,7 @@ import myRegister from './components/register/Register.vue';
 import myFooter from './components/include/Footer.vue';
 import myNav from './components/include/Headervue';
 // import myProduct from './components/product/Sliders.vue';
-import myHome from './components/home/Home.vue';
+import myHome from './components/home/Home';
 import productDetail from './components/Shop/Details';
 import myShop from './components/Shop/Shop.vue';
 import myCartHome from './components/cart/CartHome.vue';

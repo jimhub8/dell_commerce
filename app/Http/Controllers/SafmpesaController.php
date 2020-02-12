@@ -184,7 +184,7 @@ class SafmpesaController extends Controller
         // $lastname = $array['LastName'];
         // return ($request);
         // abort(200, $request->all());
-        /*$transaction = new Transaction();
+        $transaction = new Transaction();
         $transaction->TransactionType = $callbackData->TransactionType;
         $transaction->TransID = $callbackData->TransID;
         $transaction->TransTime = $callbackData->TransTime;
@@ -198,7 +198,7 @@ class SafmpesaController extends Controller
         $transaction->FirstName = $callbackData->FirstName;
         $transaction->MiddleName = $callbackData->MiddleName;
         $transaction->LastName = $callbackData->LastName;
-        $transaction->save();*/
+        $transaction->save();
 
         $transaction = new Transaction();
         $transaction->TransactionType = null;
@@ -267,7 +267,7 @@ class SafmpesaController extends Controller
 
     public function stk_push()
     {
-        $shortcode = '602996';
+        $shortcode = '174379';
         $confirmation_url = 'https://dellmat.com/confirmation';
 
         $transaction = new \Safaricom\Mpesa\Mpesa();

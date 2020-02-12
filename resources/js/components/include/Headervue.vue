@@ -5,12 +5,17 @@
     <header class="header2" id="headerq">
         <!-- Header desktop -->
         <div class="wrap_header fixed-header2 trans-0-4">
+            <!-- <div style="float: left"> -->
+            <!-- </div> -->
             <!-- Logo -->
+            <div class="flex-c-m size22 s-text21 pos-relative" style="background:#f0f0f0;">
+                <myCartmenu :menus="menus" :categories="categories"></myCartmenu>
+            </div>
             <router-link @click.native="progressBar" to="/" class="logo">
                 <img src="/storage/delmat.jpg" alt="Delmat">
             </router-link>
-            <div class="flex-c-m size22 s-text21 pos-relative" style="background:#f0f0f0;">
-                <div class="after col-md-3" @mouseleave="menuShow = false">
+
+               <!--  <div class="after col-md-3" @mouseleave="menuShow = false">
                     <v-btn flat color="info" @click="catShow = !catShow">Categories</v-btn>
                     <div class="row" style="z-index: 1000;position: absolute;background:transparant" v-show="catShow">
                         <div class="col-2" style="min-width: 300px;max-width: 300px;margin-left: -5vw;background: #eee;">
@@ -38,10 +43,7 @@
                 </div>
                 <v-layout wrap>
                     <v-flex sm5 class="form-group" style="margin-top: 10px">
-                        <!-- <v-text-field v-model="form.search" color="blue darken-2" label="Menu Name" required></v-text-field> -->
                         <input type="text" class="form-control" placeholder="Search..." v-model="search" @keyup.enter="productSearch">
-
-                        <!-- <mySearch></mySearch> -->
 
                     </v-flex>
                     <v-flex sm2 style="margin-top: 5px">
@@ -53,7 +55,7 @@
                         </v-tooltip>
                     </v-flex>
                 </v-layout>
-            </div>
+            </div>-->
             <!-- Mini Menu Start -->
             <div class="wrap_menu" id="header2">
                 <nav class="menu">
@@ -164,7 +166,9 @@
             </div>
 
             <div class="flex-c-m size22 s-text21 pos-relative" style="background:#f0f0f0;">
-                <div class="after col-md-3" @mouseleave="menuShow = false">
+
+                <myCartmenu :menus="menus" :categories="categories"></myCartmenu>
+                <!-- <div class="after col-md-3" @mouseleave="menuShow = false">
                     <v-btn flat color="info" @click="catShow = !catShow">Categories</v-btn>
                     <div class="row" style="z-index: 1000;position: absolute;background:transparent" v-show="catShow">
                         <div class="col-2" style="min-width: 300px;max-width: 300px;margin-left: -5vw;background: #eee;">
@@ -188,7 +192,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <v-layout wrap>
                     <v-flex sm5 class="form-group" style="margin-top: 10px">
@@ -366,11 +370,13 @@ import myShop from "../Shop/Shop";
 import CartHome from "../cart/CartHome";
 import Logout from "./Logout";
 // import mySearch from './Search'
+
+import myCartmenu from './Catmenu'
 export default {
     // router,
     props: ["user"],
     components: {
-        // mySearch,
+        myCartmenu,
         vueTopprogress,
         myWish,
         myShop,
