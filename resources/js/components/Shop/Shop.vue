@@ -1,18 +1,19 @@
 <template>
 <div>
     <headerP></headerP>
-    <div v-show="loader" style="text-align: center; width: 100%; margin-top: 200px;">
+    <div v-show="loading" style="text-align: center; width: 100%; margin-top: 200px;">
         <v-progress-circular :width="3" indeterminate color="red" style="margin: 1rem"></v-progress-circular>
     </div>
-    <section class="bgwhite p-t-55 p-b-65" v-show="!loader">
-        <div class="container">
+    <section class="bgwhite p-t-55 p-b-65" v-show="!loading">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
                     <div class="leftbar p-r-20 p-r-0-sm">
                         <!--  -->
-                        <h4 class="m-text14 p-b-7">Categories</h4>
+                        <!-- <h4 class="m-text14 p-b-7">Categories</h4> -->
+                        <myFilter></myFilter>
 
-                        <ul class="p-b-54">
+                        <!-- <ul class="p-b-54">
                             <li class="p-t-4">
                                 <v-btn raised color="success" @click="catAll" v-if="cat_id === null">All</v-btn>
                                 <v-btn flat color="primary" @click="catAll" v-else>All</v-btn>
@@ -22,12 +23,12 @@
                                 <v-btn raised color="success" @click="catId(menu.id)" v-if="menu.id === cat_id">{{ menu.name }}</v-btn>
                                 <v-btn flat color="primary" @click="catId(menu.id)" v-else>{{ menu.name }}</v-btn>
                             </li>
-                        </ul>
+                        </ul> -->
 
                         <!-- <v-flex xs12 sm12>
                                     <v-select :items="price" v-model="priceSelect" label="Filter By Price" single-line item-text="state" item-value="state" return-object persistent-hint @change="FilterShop"></v-select>
                                 </v-flex> -->
-                        <v-layout row wrap>
+                        <!-- <v-layout row wrap>
                             <v-flex sm5  @change="FilterShop">
                                 <el-input placeholder="Please input" v-model="price[0]"></el-input>
                             </v-flex>
@@ -37,7 +38,7 @@
                         </v-layout>
 
                         <label for="">Price Range </label>
-                        <el-slider v-model="price" range :max="500000" @change="FilterShop"></el-slider>
+                        <el-slider v-model="price" range :max="500000" @change="FilterShop"></el-slider> -->
 
                         <!--  -->
                         <!-- <h4 class="m-text14 p-b-32">Filters</h4>
@@ -139,9 +140,9 @@
                         <div class="flex-w">
                             <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
                                 <!-- <v-layout wrap> -->
-                                <v-flex xs12 sm12>
+                                <!-- <v-flex xs12 sm12>
                                     <v-select :items="items" v-model="itemSelect" label="Filter By" single-line item-text="state" item-value="abbr" return-object persistent-hint @change="FilterShop"></v-select>
-                                </v-flex>
+                                </v-flex> -->
                             </div>
                         </div>
 
@@ -235,13 +236,13 @@
 
 <script>
 import headerP from "../include/Headerpartial";
+import myFilter from './details/filter'
 export default {
     components: {
-        headerP
+        headerP, myFilter
     },
     data() {
         return {
-            products: [],
             menus: [],
             form: {
                 search: ""
@@ -272,7 +273,12 @@ export default {
             },
             loader: false,
             wish: [],
-            cat_id: null
+            cat_id: null,
+
+            filter_data: {
+                price: [0, 0],
+                category_id: 0
+            },
         };
     },
     methods: {
@@ -350,24 +356,33 @@ export default {
                     this.errors = error.response.data.errors;
                 });
         },
-        FilterShop(item) {
+        FilterShop(id) {
             eventBus.$emit("progressEvent");
-            axios
-                .post("/FilterShop", {
-                    item: this.cat_id,
-                    price: this.price,
-                    itemSelect: this.itemSelect
-                })
-                .then(response => {
-                    eventBus.$emit("StoprogEvent");
-                    this.loader = false;
-                    this.products = response.data;
-                })
-                .catch(error => {
-                    eventBus.$emit("StoprogEvent");
-                    this.loader = false;
-                    this.errors = error.response.data.errors;
-                });
+            this.filter_data.category_id = id
+            eventBus.$emit("progressEvent");
+            var payload = {
+                model: 'FilterShop',
+                update: 'updateProductsList',
+                data: this.filter_data,
+
+            }
+            this.$store.dispatch('filterData', payload)
+            // axios
+            //     .post("/FilterShop", {
+            //         item: this.cat_id,
+            //         price: this.price,
+            //         itemSelect: this.itemSelect
+            //     })
+            //     .then(response => {
+            //         eventBus.$emit("StoprogEvent");
+            //         this.loader = false;
+            //         this.products = response.data;
+            //     })
+            //     .catch(error => {
+            //         eventBus.$emit("StoprogEvent");
+            //         this.loader = false;
+            //         this.errors = error.response.data.errors;
+            //     });
         },
         getWish() {
             eventBus.$emit("progressEvent");
@@ -402,7 +417,7 @@ export default {
         }
     },
     mounted() {
-        this.loader = true;
+        // this.loader = true;
         this.FilterShop();
         this.getMenus();
         eventBus.$emit("ScollTopEvent");
@@ -416,7 +431,15 @@ export default {
         eventBus.$on("RefWishEvent", data => {
             this.FilterShop();
         });
-    }
+    },
+    computed: {
+        products() {
+            return this.$store.getters.products
+        },
+        loading() {
+            return this.$store.getters.loading
+        }
+    },
 };
 </script>
 

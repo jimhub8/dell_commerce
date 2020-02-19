@@ -16,6 +16,7 @@
             <Tip9 v-if="count == 9"></Tip9>
             <myTerms v-if="count == 10"></myTerms>
             <v-card-actions>
+                <v-btn color="blue darken-1" flat @click="count -= 1" v-if="count > 1">Back</v-btn>
                 <v-spacer></v-spacer>
                 <v-btn color="blue darken-1" flat @click="count += 1" v-if="count < 10">Next</v-btn>
                 <v-btn color="blue darken-1" flat @click="dialog = false" v-else>Finish</v-btn>

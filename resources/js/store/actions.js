@@ -825,4 +825,111 @@ export default {
         })
     },
 
+
+
+
+
+
+
+    // Get Data
+    getData(context, payload) {
+        var model = payload.model
+        var update = payload.update
+        context.commit('loading', true)
+        axios.get(model).then((response) => {
+            context.commit(update, response.data)
+            context.commit('loading', false)
+        }).catch((error) => {
+            if (error.response.status === 500) {
+                eventBus.$emit('errorEvent', error.response.statusText)
+                return
+            } else if (error.response.status === 401 || error.response.status === 409) {
+                eventBus.$emit('reloadRequest', error.response.statusText)
+            }
+            context.commit('loading', false)
+            this.errors = error.response.data.errors
+        })
+    },
+
+    // Post
+    postData(context, payload) {
+        var model = payload.model
+        var data = payload.data
+        context.commit('loading', true)
+        axios.post(model, data).then((response) => {
+            context.commit('loading', false)
+        }).catch((error) => {
+            if (error.response.status === 500) {
+                eventBus.$emit('errorEvent', error.response.statusText)
+                return
+            } else if (error.response.status === 401 || error.response.status === 409) {
+                eventBus.$emit('reloadRequest', error.response.statusText)
+            }
+            context.commit('loading', false)
+            this.errors = error.response.data.errors
+        })
+    },
+
+    // Patch
+    patchData(context, payload) {
+        var model = payload.model
+        var id = payload.id
+        var data = payload.data
+        context.commit('loading', true)
+        axios.post(model + '/' + id, data).then((response) => {
+            context.commit('loading', false)
+        }).catch((error) => {
+            if (error.response.status === 500) {
+                eventBus.$emit('errorEvent', error.response.statusText)
+                return
+            } else if (error.response.status === 401 || error.response.status === 409) {
+                eventBus.$emit('reloadRequest', error.response.statusText)
+            }
+            context.commit('loading', false)
+            this.errors = error.response.data.errors
+        })
+    },
+
+    // Filter Data
+    filterData(context, payload) {
+        var model = payload.model
+        var update = payload.update
+        var data = payload.data
+        context.commit('loading', true)
+        axios.post(model, data).then((response) => {
+            context.commit(update, response.data)
+            context.commit('loading', false)
+        }).catch((error) => {
+            if (error.response.status === 500) {
+                eventBus.$emit('errorEvent', error.response.statusText)
+                return
+            } else if (error.response.status === 401 || error.response.status === 409) {
+                eventBus.$emit('reloadRequest', error.response.statusText)
+            }
+            context.commit('loading', false)
+            this.errors = error.response.data.errors
+        })
+    },
+
+    // Search Data
+    searchData(context, payload) {
+        var model = payload.model
+        var update = payload.update
+        var search = payload.search
+        context.commit('loading', true)
+        axios.get(model + '/' + search).then((response) => {
+            context.commit(update, response.data)
+            context.commit('loading', false)
+        }).catch((error) => {
+            if (error.response.status === 500) {
+                eventBus.$emit('errorEvent', error.response.statusText)
+                return
+            } else if (error.response.status === 401 || error.response.status === 409) {
+                eventBus.$emit('reloadRequest', error.response.statusText)
+            }
+            context.commit('loading', false)
+            this.errors = error.response.data.errors
+        })
+    },
+
 }

@@ -41,26 +41,15 @@ class FilterController extends Controller
         // return $request->all();
         // return $request->price['state'];
         $products = new Product;
-        if ($request->itemSelect['state'] != 'All') {
-            $item = $request->itemSelect['state'];
-            // $products = Product::where($item, 1);
+
+        if ($request->price[1] > 0) {
+            $products = $products->whereBetween('price', $request->price);
         }
-        // return $products->paginate(12);
-        if (array_key_exists('state', $request->price)) {
-            if ($request->price['state'] != 'All') {
-                // $products = $products->whereBetween('price', $request->price['state']);
-                $products = $products->whereBetween('price', $request->price['state']);
-            }
-        }
-        // return $products->paginate(12);
-        if ($request->item) {
-            $products = $products->where('category_id', $request->item);
+        if ($request->category_id > 0) {
+            $products = $products->where('category_id', $request->category_id);
         }
         $products = $products->paginate(12);
         $products->transform(function ($product, $key) {
-            // dd(unserialize($order->paypal['id']));
-            // $order->paypal = unserialize($order->paypal);
-
             $wishList = Session::has('wish') ? Session::get('wish') : null;
             $wish_id = [];
             if (!empty($wishList)) {
@@ -71,17 +60,11 @@ class FilterController extends Controller
                     }
                 }
             }
-
-
-
-
             if (in_array($product->id, $wish_id)) {
                 $product->wish_list = 1;
             } else {
                 $product->wish_list = 0;
             }
-
-            // $product->wish_list = 1;
             return $product;
         });
         return $products;
